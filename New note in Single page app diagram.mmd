@@ -1,0 +1,18 @@
+sequenceDiagram
+autonumber
+actor User 
+participant Browser 
+participant Server
+
+User->>Browser: writing a new note in the textfield
+User->>Browser: clicking the Save button
+
+Browser->>Browser: executes JavaScript*
+
+Browser->>Server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa *2
+activate Server
+Server-->>Browser:  HTTP status code 201 (created)
+deactivate Server
+
+ Note right of browser: *1 fetches the new note, creates a submit event, prevents defaultloading, processes the new note and shows it on the page
+ Note right of browser: *2 form submit event (contains the new note as JSON data)
