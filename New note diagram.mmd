@@ -1,0 +1,37 @@
+
+sequenceDiagram
+autonumber
+actor User 
+participant Browser 
+participant Server
+
+User->>Browser: writing a new note in the textfield
+User->>Browser: clicking the Save button
+
+Browser->>Server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+activate Server
+Server-->>Browser: HTTP status code 302
+deactivate Server
+
+Browser->>Server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+activate Server
+Server-->>Browser: HTML document
+deactivate Server
+
+Browser->>Server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+activate Server
+Server-->>Browser: CSS file
+deactivate Server
+
+Browser->>Server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+activate Server
+Server-->>Browser: JavaScript file
+deactivate Server
+
+Browser->>Server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+activate Server
+Server-->>Browser: returns the notes as JSON data
+deactivate Server
+
+Browser-->>Browser: executes an event handler, which renders the notes to the page using the DOM-API
+
