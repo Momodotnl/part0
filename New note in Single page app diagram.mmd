@@ -7,7 +7,7 @@ participant Server
 User->>Browser: writing a new note in the textfield
 User->>Browser: clicking the Save button
 
-Browser->>Browser: executes JavaScript*
+Browser->>Browser: executes JavaScript*1
 
 Browser->>Server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa *2
 activate Server
